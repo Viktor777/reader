@@ -1,1 +1,3 @@
-# reader
+# Reader
+
+Reader for sevice Reddit.
