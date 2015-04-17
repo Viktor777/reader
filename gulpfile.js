@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     };
 
 gulp.task('js', function() {
-    gulp.src('./app/index.js')
+    gulp.src('./app/index.jsx')
         .pipe(browserify({
             debug: true,
             transform: ['reactify'],
