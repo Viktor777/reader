@@ -7,7 +7,7 @@ var React = require('react'),
     List = require('./main/list'),
     count = 0,
     LIMIT = 25,
-    URL = 'http://www.reddit.com/r/$subreddit/$section',
+    URL = 'https://www.reddit.com/r/$subreddit/$section',
     reddit = require('./reddit');
 
 if (Array.isArray(params)) {
