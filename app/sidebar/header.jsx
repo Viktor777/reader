@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react'),
-    reddit = require('./reddit');
+    reddit = require('../reddit');
 
 module.exports = React.createClass({
     getInitialState: function() {
@@ -23,7 +23,6 @@ module.exports = React.createClass({
         );
     },
     _onInfo: function (result) {
-        console.log(result);
         this.setState(result.data);
     }
 });

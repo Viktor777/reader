@@ -1,27 +1,28 @@
-var CACHE_NAME = 'reader-v0.0.3',
-    url = [
+var CACHE_NAME = 'reader-v0.1.1',
+    urls = [
+        '/reader/config.json',
         '/reader/assets/build/reader.min.js',
-        '/reader/assets/build/screen.css',
-        '/reader/config.json'
+        '/reader/assets/build/screen.css'
     ];
 
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
-            return cache.addAll(url);
+            return cache.addAll(urls);
         })
     );
+});
+
+self.addEventListener('activate', function (event) {
+    event.waitUntil(caches.delete(CACHE_NAME));
 });
 
 self.addEventListener('fetch', function (event) {
     event.respondWith(
         caches.match(event.request)
-            .catch(function () {
-                return fetch(event.request);
-            })
             .then(function (response) {
                 var fetchRequest;
-console.log(response, event.request);
+
                 if (response) {
                     return response;
                 }

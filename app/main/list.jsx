@@ -35,7 +35,7 @@ module.exports = React.createClass({
                 loadMore={this.loadMore}
                 hasMore={this.state.hasMore}>
                 {posts}
-            </InfiniteScroll >
+            </InfiniteScroll>
         );
     },
     _onPosts: function (slice) {
