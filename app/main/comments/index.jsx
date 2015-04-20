@@ -29,7 +29,7 @@ module.exports = React.createClass({
             }),
             loader;
 
-        if (!this.state.comments.length) {
+        if (!this.state.comments.length && this.props.number) {
             loader = <li className="loader">Loading ...</li>;
         }
 

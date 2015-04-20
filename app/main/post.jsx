@@ -52,6 +52,7 @@ module.exports = React.createClass({
                             subreddit={this.props.data.subreddit}
                             sort={this.props.section}
                             article={this.props.data.id}
+                            number={this.props.data.num_comments}
                         />;
         }
 
