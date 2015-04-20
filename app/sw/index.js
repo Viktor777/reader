@@ -42,13 +42,12 @@ self.addEventListener('fetch', function (event) {
                 var fetchRequest;
 
                 if (response) {
+                    console.log('Response:', response);
                     return response;
                 }
                 fetchRequest = event.request.clone();
 
-                return fetch(fetchRequest, {
-                    mode: 'no-cors'
-                }).then(
+                return fetch(fetchRequest).then(
                     function (response) {
                         var responseToCache;
 
@@ -58,6 +57,8 @@ self.addEventListener('fetch', function (event) {
                         responseToCache = response.clone();
                         caches.open(CACHE_NAME).then(function (cache) {
                             cache.put(event.request, responseToCache);
+                        }).catch(function (error) {
+                            console.error('Fetch failed:', error);
                         });
 
                         return response;
