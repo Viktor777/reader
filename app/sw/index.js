@@ -12,8 +12,11 @@ var CACHE_NAME = 'reader-v1',
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
-            console.log(cache);
-            return cache.addAll(urls);
+            return cache.addAll(urls).then(function () {
+                console.log('Resources are cached.');
+            });
+        }).catch(function (error) {
+            console.error('Install failed:', error);
         })
     );
 });
@@ -37,12 +40,12 @@ self.addEventListener('fetch', function (event) {
         caches.match(event.request)
             .then(function (response) {
                 var fetchRequest;
-console.log(response);
+
                 if (response) {
                     return response;
                 }
                 fetchRequest = event.request.clone();
-console.log(fetchRequest);
+
                 return fetch(fetchRequest, {
                     mode: 'no-cors'
                 }).then(
@@ -59,7 +62,9 @@ console.log(fetchRequest);
 
                         return response;
                     }
-                );
+                ).catch(function () {
+                    console.log('Fetch failed:', error);
+                });
             })
     );
 });
