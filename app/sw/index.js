@@ -1,8 +1,9 @@
 importScripts('cache-polyfill.js');
 
-var CACHE_NAME = 'reader-v0.1.1',
+var CACHE_NAME = 'reader-v1',
     urls = [
         '/reader/',
+        '/reader/index.html',
         '/reader/config.json',
         '/reader/assets/build/reader.min.js',
         '/reader/assets/build/styles.css'
