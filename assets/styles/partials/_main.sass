@@ -1,0 +1,28 @@
+.main
+  position: relative
+  z-index: 50
+  @media screen and (min-width: $viewport_xs)
+    height: 100%
+    margin-left: $sidebar_width
+  & > div
+    position: relative
+    @media screen and (min-width: $viewport_s)
+      display: -webkit-box
+      display: -webkit-flex
+      display: -ms-flexbox
+      display: flex
+      -webkit-flex-wrap: wrap
+      -ms-flex-wrap: wrap
+      flex-wrap: wrap
+    &:after
+      content: ""
+      background: rgba(202,202,202,0.4)
+      opacity: 0
+      position: absolute
+      pointer-events: none
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      -webkit-transition: opacity $anim-time
+      transition: opacity $anim-time

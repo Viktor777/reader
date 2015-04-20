@@ -1,0 +1,44 @@
+*,
+*:after,
+*:before
+  box-sizing: border-box
+.clearfix:before,
+.clearfix:after
+  content: ''
+  display: table
+.clearfix:after
+  clear: both
+
+body
+  background: $color-secondary
+  color: #7b7b7b
+  font-weight: 400
+  font-size: 16px
+  font-family: $sans-serif
+  line-height: 1.4
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  overflow: hidden
+  overflow-y: scroll
+
+a
+  color: $color-link
+  outline: none
+  text-decoration: none
+  -webkit-transition: color $anim-time, background-color $anim-time, -webkit-transform $anim-time
+  transition: color $anim-time, background-color $anim-time, transform $anim-time
+  &:hover,
+  &:active,
+  &:focus
+    color: #333
+    outline: none
+
+button:focus
+  outline: none
+  -webkit-transition: color $anim-time, -webkit-transform $anim-time
+  transition: color $anim-time, transform $anim-time
+
+html,
+body
+  @media screen and (min-width: $viewport_xs)
+    height: 100vh

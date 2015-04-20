@@ -1,0 +1,177 @@
+.post
+  background: $color_secondary
+  text-align: center
+  position: relative
+  display: -webkit-box
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+  -webkit-box-direction: normal
+  -webkit-box-orient: vertical
+  -webkit-flex-direction: column
+  -ms-flex-direction: column
+  flex-direction: column
+  -webkit-justify-content: center
+  justify-content: center
+  &.closed
+    &:hover
+      color: #555
+  .wrapper
+    padding: 45px 55px 30px
+  &:before
+    position: absolute
+    content: ""
+    top: 0
+    right: 55px
+    bottom: 0
+    left: 55px
+    border-bottom: 1px solid rgba(74,74,74,0.075)
+  @media screen and (min-width: $viewport_s)
+    width: 50%
+    &:before
+      top: 5px
+      right: 5px
+      bottom: 5px
+      left: 5px
+      border: 1px solid rgba(74,74,74,0.075)
+      -webkit-transition: opacity 0.3s
+      transition: opacity 0.3s
+    &:hover:before,
+    &:focus:before
+      border: 3px solid rgba($color-link,0.5)
+  @media screen and (min-width: $viewport_m)
+    width: 33.333%
+  @media screen and (min-width: $viewport_l)
+    width: 25%
+  @media screen and (min-width: $viewport_xl)
+    width: 20%
+  @media screen and (min-width: $viewport_xxl)
+    width: 16.66%
+  .meta
+    font-size: 0.95em
+    font-style: italic
+    font-family: $serif
+    text-align: center
+    display: block
+    .author,
+    .date
+      display: block
+      strong
+        font-weight: 700
+  h3
+    margin: 0
+    font-size: 1.375em
+    font-family: $serif
+    font-weight: 700
+    text-align: center
+    &:after
+      display: block
+      height: 1px
+      overflow: hidden
+      width: 40%
+      margin: 1em auto
+      background: rgba(0,0,0,0.1)
+      content: ""
+  .comments-number
+    color: #aaa
+    display: block
+    font-size: 0.85em
+    margin: 2em 0
+    text-align: left
+    strong
+      font-weight: 700
+  .link-more
+    display: block
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    text-indent: -9999px
+  .link-full
+    display: none
+  .content
+    font-size: 1.35em
+    margin: 1em auto
+  .content,
+  .close,
+  .comments
+    display: none
+  .close
+    position: absolute
+    border: none
+    background: none
+    margin: 0
+    z-index: 100
+    top: 0
+    right: 0
+    font-size: 16px
+    color: #ddd
+    cursor: pointer
+    padding: 20px 30px
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    &:hover,
+    &:focus,
+    &.active
+      color: #aaa
+  &.opened
+    display: block
+    height: 100vh
+    overflow: auto
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 5
+    text-align: left
+    .wrapper
+      overflow: auto
+      position: absolute
+      top: 0
+      left: 0
+      height: 100%
+      width: 100%
+    &:before
+      display: none
+    .link-more
+      display: none
+    .content,
+    .close
+      display: block
+    .link-full
+      display: inline
+    h3
+      margin: 1em 0
+      font-size: 1.875em
+    .comments
+      display: block
+      position: relative
+      margin: 2em 0
+      & > li
+        padding: 25px 0 10px
+        position: relative
+        &:before
+          background: rgba(0,0,0,0.1)
+          display: block
+          height: 1px
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          width: 50%
+      .meta
+        text-align: left
+        .date,
+        .author
+          display: inline
+      .replies
+        & > li
+          border-left: 3px solid rgba(0,0,0,0.1)
+          padding-left: 20px
+      .content
+        font-size: 1.15em

@@ -1,20 +1,34 @@
+importScripts('cache-polyfill.js');
+
 var CACHE_NAME = 'reader-v0.1.1',
     urls = [
+        '/reader/',
         '/reader/config.json',
         '/reader/assets/build/reader.min.js',
-        '/reader/assets/build/screen.css'
+        '/reader/assets/build/styles.css'
     ];
 
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
+            console.log(cache);
             return cache.addAll(urls);
         })
     );
 });
 
 self.addEventListener('activate', function (event) {
-    event.waitUntil(caches.delete(CACHE_NAME));
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
 });
 
 self.addEventListener('fetch', function (event) {
@@ -22,13 +36,15 @@ self.addEventListener('fetch', function (event) {
         caches.match(event.request)
             .then(function (response) {
                 var fetchRequest;
-
+console.log(response);
                 if (response) {
                     return response;
                 }
                 fetchRequest = event.request.clone();
-
-                return fetch(fetchRequest).then(
+console.log(fetchRequest);
+                return fetch(fetchRequest, {
+                    mode: 'no-cors'
+                }).then(
                     function (response) {
                         var responseToCache;
 

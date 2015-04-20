@@ -10,7 +10,7 @@ module.exports = React.createClass({
     componentDidMount: function () {
         reddit('/r/$subreddit/about.json').get({
             $subreddit: this.props.subreddit
-        }).then(this._onInfo.bind(this)).done();
+        }).then(this.onInfo).done();
     },
     render: function () {
         return (
@@ -22,7 +22,7 @@ module.exports = React.createClass({
             </header>
         );
     },
-    _onInfo: function (result) {
+    onInfo: function (result) {
         this.setState(result.data);
     }
 });
